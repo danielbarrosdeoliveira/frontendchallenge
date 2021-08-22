@@ -1,9 +1,7 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
+<div class="component">
   <router-view/>
+</div>
 </template>
 
 <script lang="ts">
@@ -13,3 +11,9 @@ import '@/assets/app.css';
 
 export default defineComponent({});
 </script>
+
+<style scoped>
+.component {
+  margin: 5rem;
+}
+</style>
