@@ -9,8 +9,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import 'normalize.css';
+import '@/assets/app.css';
 
 export default defineComponent({});
 </script>
-
-<style></style>
