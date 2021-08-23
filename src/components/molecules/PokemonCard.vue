@@ -1,9 +1,11 @@
 <template>
-  <div class="card" v-for="pokemon in pokemons" :key="pokemon.id">
-    <router-link :to="{ name: 'pokemon', params: { id: pokemon.id } }">
-      <CardImage :source="pokemon.images.small" />
-      <CardInfo :name="pokemon.name" :pokeid="pokemon.id" :poketype="pokemon.type" />
-    </router-link>
+  <div class="pokemon-card" v-if="pokemons && pokemons.length">
+    <div class="card" v-for="pokemon in pokemons" :key="pokemon.id">
+      <router-link :to="{ name: 'pokemon', params: { id: pokemon.id } }">
+        <CardImage :source="pokemon.images.small" />
+        <CardInfo :name="pokemon.name" :pokeid="pokemon.id" :poketype="pokemon.types" />
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -28,6 +30,11 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.pokemon-card {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 30px;
+}
 .card {
   background-color: #3d5a80;
   width: 100%;

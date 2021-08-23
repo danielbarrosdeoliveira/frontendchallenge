@@ -4,7 +4,7 @@
       <p>Nome: {{ name }}</p>
       <p>ID: {{ pokeid }}</p>
     </div>
-    <ul>
+    <ul class="id">
       <p>Tipo(s):</p>
       <li class="type-item" v-for="(type, index) in poketype" :key="type[index]">{{ type }}</li>
     </ul>
