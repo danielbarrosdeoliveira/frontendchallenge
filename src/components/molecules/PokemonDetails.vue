@@ -56,22 +56,30 @@
     </div>
     <Button to="/" text="Voltar" />
   </div>
+  <ModalAttack v-if="modal" />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import { Button } from '../atoms';
+import { ModalAttack } from '@/components/molecules';
 
 export default defineComponent({
   name: 'PokemonDetails',
   components: {
     Button,
+    ModalAttack,
   },
   props: {
     detail: {
       type: Object,
       required: true,
     },
+  },
+  setup() {
+    const modal = ref(false);
+
+    return { modal };
   },
 });
 </script>
