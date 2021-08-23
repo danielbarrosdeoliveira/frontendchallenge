@@ -22,7 +22,7 @@ export default defineComponent({
   },
   props: {
     pokemons: {
-      type: Array as PropType<Pokemon[]>,
+      type: Object as PropType<Pokemon[]>,
       required: true,
     },
   },

@@ -1,16 +1,28 @@
 <template>
   <div class="pokemon-detail">
-    <PokemonInfo />
+    <PokemonInfoTemplate />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { PokemonInfo } from '@/components/organisms';
+import { mapActions } from 'vuex';
+import { PokemonInfoTemplate } from '@/components/templates';
 
 export default defineComponent({
-  components: { PokemonInfo },
+  components: { PokemonInfoTemplate },
   name: 'PokemonDetail',
+  data() {
+    return {
+      id: this.$route.params,
+    };
+  },
+  methods: {
+    ...mapActions(['show']),
+  },
+  mounted() {
+    this.show(this.id);
+  },
 });
 </script>
 

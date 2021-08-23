@@ -4,12 +4,18 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-
+import { mapActions } from 'vuex';
 import { HomeTemplate } from '@/components/templates';
 
 export default defineComponent({
   name: 'Component',
   components: { HomeTemplate },
+  methods: {
+    ...mapActions(['index']),
+  },
+  mounted() {
+    this.index();
+  },
 });
 </script>
 

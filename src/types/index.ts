@@ -1,1 +1,5 @@
-export * from './Pokemon'
+import { Pokemon } from './Pokemon';
+
+export {
+  Pokemon
+}
