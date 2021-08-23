@@ -1,5 +1,5 @@
 <template>
-  <div class="image-detail">
+  <div class="image-info">
     <img :src="source" :alt="text" />
   </div>
 </template>
@@ -8,7 +8,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'ImageDetail',
+  name: 'ImageInfo',
   props: {
     source: {
       type: String,
@@ -23,7 +23,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.image-detail img {
+.image-info img {
   width: 100%;
   max-width: 400px;
   height: 100%;

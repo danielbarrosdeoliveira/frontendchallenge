@@ -56,4 +56,13 @@ button img {
   display: block;
   max-width: 16px;
 }
+
+@media screen and (max-width: 480px) {
+  .search-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+  }
+}
 </style>

@@ -72,7 +72,7 @@ export default defineComponent({
   },
   props: {
     detail: {
-      type: Array,
+      type: Object,
       required: true,
     },
   },

@@ -34,7 +34,9 @@ export default defineComponent({
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 30px;
+  margin: 0 auto;
 }
+
 .card {
   background-color: #3d5a80;
   width: 100%;
@@ -48,5 +50,16 @@ export default defineComponent({
 .card:hover {
   transform: scale(1.1);
   cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+  .pokemon-card {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+    max-height: 100vh;
+    flex-direction: row;
+    justify-content: center;
+  }
 }
 </style>

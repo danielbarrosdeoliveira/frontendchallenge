@@ -38,14 +38,18 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   padding: 8px;
+  margin: 0 auto;
 }
+
 .card-info p {
   line-height: 24px;
 }
+
 .card-info ul {
   display: flex;
   margin-top: 0.5rem;
 }
+
 .card-info .type-item {
   display: grid;
   line-height: 24px;

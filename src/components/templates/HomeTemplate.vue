@@ -37,4 +37,12 @@ export default defineComponent({
   margin: 5rem auto;
   grid-gap: 5rem;
 }
+
+@media screen and (max-width: 480px) {
+  .home-template {
+    max-width: 480px;
+    width: 100%;
+    position: relative;
+  }
+}
 </style>

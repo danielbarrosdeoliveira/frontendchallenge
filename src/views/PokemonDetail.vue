@@ -20,14 +20,8 @@ export default defineComponent({
   methods: {
     ...mapActions(['show']),
   },
-  mounted() {
+  beforeMount() {
     this.show(this.id);
   },
 });
 </script>
-
-<style scoped>
-.pokemon-detail {
-  display: flex;
-}
-</style>
