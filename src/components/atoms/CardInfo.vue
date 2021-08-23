@@ -26,7 +26,7 @@ export default defineComponent({
       required: true,
     },
     poketype: {
-      type: String,
+      type: Array,
       required: true,
     },
   },

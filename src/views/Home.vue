@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import Card from '@/components/molecules/Card.vue';
+import Card from '@/components/molecules/PokemonCard.vue';
 import Pokemon from '@/types/Pokemon';
 
 export default defineComponent({

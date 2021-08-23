@@ -1,7 +1,9 @@
 <template>
   <div class="card" v-for="pokemon in pokemons" :key="pokemon.id">
-    <CardImage :source="pokemon.images.small" />
-    <CardInfo :name="pokemon.name" :pokeid="pokemon.id" :poketype="pokemon.type" />
+    <router-link :to="{ name: 'pokemon', params: { id: pokemon.id } }">
+      <CardImage :source="pokemon.images.small" />
+      <CardInfo :name="pokemon.name" :pokeid="pokemon.id" :poketype="pokemon.type" />
+    </router-link>
   </div>
 </template>
 

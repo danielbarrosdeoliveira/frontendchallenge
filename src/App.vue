@@ -14,6 +14,6 @@ export default defineComponent({});
 
 <style scoped>
 .component {
-  margin: 5rem;
+  /* margin: 5rem; */
 }
 </style>
