@@ -1,30 +1,119 @@
 <template>
   <div class="pokemon-details">
-    <DetailInfo title="Nome" text="teste" />
-    <DetailInfo title="ID" text="teste1232132" />
-    <DetailInfo title="Tipo" text="teste" />
-    <DetailInfo title="Fraqueza" text="teste" />
-    <DetailInfo title="Resistência" text="teste" />
-    <DetailInfo title="Ataques" text="teste" />
+    <div class="detail-header">
+      <div class="detail-name">
+        <h3>
+          Nome:
+          <span class="name">{{ detail.name }}</span>
+        </h3>
+      </div>
+      <div class="detail-id">
+        <h3>
+          ID:
+          <span class="id">{{ detail.id }}</span>
+        </h3>
+      </div>
+    </div>
+    <div class="detail-body">
+      <div class="detail">
+        <ul class="types">
+          <h3>Tipo(s):</h3>
+          <li class="type" v-for="type in detail.types" :key="type">
+            {{ type }}
+          </li>
+        </ul>
+      </div>
+      <div class="detail">
+        <ul v-if="detail && detail.resistances" class="resistences">
+          <h3>Resistências:</h3>
+          <li class="resistence" v-for="resistence in detail.resistances" :key="resistence">
+            {{ resistence.type }}
+          </li>
+        </ul>
+        <ul>
+          <h3>Resistências:</h3>
+          <li class="resistence">
+            don't list
+          </li>
+        </ul>
+      </div>
+      <div class="detail">
+        <ul class="weaknesses">
+          <h3>Fraquezas:</h3>
+          <li class="weakness" v-for="weakness in detail.weaknesses" :key="weakness">
+            {{ weakness.type }}
+          </li>
+        </ul>
+      </div>
+      <div class="detail">
+        <ul class="attacks">
+          <h3>Ataques:</h3>
+          <li @click="modal = !modal" class="attack" v-for="attack in detail.attacks" :key="attack">
+            {{ attack.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <Button to="/" text="Voltar" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { DetailInfo } from '../atoms';
+import { Button } from '../atoms';
 
 export default defineComponent({
   name: 'PokemonDetails',
   components: {
-    DetailInfo,
+    Button,
+  },
+  props: {
+    detail: {
+      type: Object,
+      required: true,
+    },
   },
 });
 </script>
 
 <style scoped>
 .pokemon-details {
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
+  gap: 32px;
   width: 100%;
   max-width: 400px;
   padding: 1rem;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.detail {
+  margin-top: 1rem;
+}
+
+.name,
+.id {
+  font-weight: normal;
+}
+
+.resistence,
+.attack,
+.type,
+.weakness {
+  margin: 1rem 0 0 2rem;
+  list-style: circle;
+}
+
+.attack {
+  transition: color 0.3s;
+  cursor: pointer;
+}
+.attack:hover {
+  color: #ee6c4d;
 }
 </style>
