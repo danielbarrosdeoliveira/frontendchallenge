@@ -1,8 +1,31 @@
-interface Pokemon {
-  id: string,
-  name: string,
-  images: Object,
-  type: Array<String>
+interface Image {
+  small: string,
+  large: string
 }
 
-export default Pokemon;
+interface Attack {
+  name: string,
+  cost: Array<String>
+  convertedEnergyCost: number,
+  damage?: string,
+  text: string
+}
+
+interface Weakness {
+  type: string,
+  value: string
+}
+
+interface Resistence {
+  type: string,
+  value: string
+}
+export interface Pokemon {
+  id: string,
+  name: string,
+  images: Image,
+  types: Array<String>,
+  attacks: Array<Attack>,
+  weaknesses: Array<Weakness>,
+  resistances?: Array<Resistence>
+}
