@@ -25,5 +25,7 @@ export default defineComponent({
 .card-image img {
   width: 100%;
   display: block;
+  height: 100%;
+  max-height: 280px;
 }
 </style>
