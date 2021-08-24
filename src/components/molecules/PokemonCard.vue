@@ -1,6 +1,6 @@
 <template>
   <div class="pokemon-card" v-if="pokemons && pokemons.length">
-    <div class="card" v-for="pokemon in pokemons" :key="pokemon.id">
+    <div class="card" v-for="pokemon in orderedJobs" :key="pokemon.id">
       <router-link :to="{ name: 'pokemon', params: { id: pokemon.id } }">
         <CardImage :source="pokemon.images.small" />
         <CardInfo :name="pokemon.name" :pokeid="pokemon.id" :poketype="pokemon.types" />
@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { computed, defineComponent, PropType } from 'vue';
 import { CardImage, CardInfo } from '@/components/atoms';
 import { Pokemon } from '@/types';
 
@@ -25,6 +25,15 @@ export default defineComponent({
       type: Object as PropType<Pokemon[]>,
       required: true,
     },
+  },
+  setup(props) {
+    // eslint-disable-next-line arrow-body-style
+    const orderedJobs = computed(() => {
+      // eslint-disable-next-line vue/no-mutating-props
+      return props.pokemons.sort((a:Pokemon, b:Pokemon) => (a.name > b.name ? 1 : -1));
+    });
+
+    return { orderedJobs };
   },
 });
 </script>
