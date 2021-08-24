@@ -36,9 +36,9 @@ export const store = createStore({
     },
   },
   actions: {
-    async index(context) {
+    async index(context, query = '') {
       context.commit('SET_LOADING', true);
-      const pokemons = await api.get('/cards').then((response) => {
+      const pokemons = await api.get(`/cards${query}`).then((response) => {
         context.commit('SET_ALL', response.data.data);
       });
       context.commit('SET_LOADING', false);

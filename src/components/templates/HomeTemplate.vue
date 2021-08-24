@@ -22,10 +22,12 @@ export default defineComponent({
   },
   setup() {
     const store = useStore();
+    const loading = computed(() => store.state.loading);
+    const pokemons = computed(() => store.state.pokemons);
 
     return {
-      loading: computed(() => store.state.loading),
-      pokemons: computed(() => store.state.pokemons),
+      loading,
+      pokemons,
     };
   },
 });

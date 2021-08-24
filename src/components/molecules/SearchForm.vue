@@ -1,7 +1,12 @@
 <template>
   <form class="search-form">
-    <input class="search" type="text" placeholder="Pesquise pelo nome do pokemon..." />
-    <button type="submit">
+    <input
+      v-model="search"
+      class="search"
+      type="text"
+      placeholder="Pesquise pelo nome do pokemon..."
+    />
+    <button type="submit" @click.prevent="searchPokemon" @keypress.enter="searchPokemon">
       <img src="@/assets/icons/search.svg" alt="Buscar" />
     </button>
   </form>
@@ -9,9 +14,22 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { mapActions } from 'vuex';
 
 export default defineComponent({
   name: 'SearchForm',
+  data() {
+    return {
+      search: '',
+    };
+  },
+  methods: {
+    ...mapActions(['index']),
+    searchPokemon() {
+      const query = `?q=name:${this.search}`;
+      this.index(query);
+    },
+  },
 });
 </script>
 
