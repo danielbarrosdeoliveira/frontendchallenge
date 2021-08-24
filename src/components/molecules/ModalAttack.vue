@@ -1,26 +1,28 @@
 <template>
   <div class="modal-attack">
     <div class="modal-header">
-      <button @click.prevent="this.$router.go(0)">
+      <button @click="$emit('closeModal')">
         <img src="@/assets/icons/close.svg" alt="voltar" />
       </button>
     </div>
     <div class="modal-body">
       <div class="attack-name">
         <h3>Nome:</h3>
-        <span>Energy Absorption</span>
+        <span>{{ attack.name }}</span>
       </div>
       <div class="attack-cost">
         <h3>Custo de Mana:</h3>
-        <span>1</span>
+        <span>{{ attack.convertedEnergyCost }}</span>
       </div>
       <div class="attack-damage">
         <h3>Dano:</h3>
-        <span>no information</span>
+        <span v-if="attack.damage">{{ attack.damage }}</span>
+        <span v-else>No damage</span>
       </div>
       <div class="attack-description">
         <h3>Descrição:</h3>
-        <span>Choose up to 2 Energy cards from your discard pile and attach them to Mewtwo.</span>
+        <span v-if="attack.text">{{ attack.text }}</span>
+        <span v-else>No description</span>
       </div>
     </div>
   </div>
@@ -31,11 +33,20 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'ModalAttack',
+  emits: ['closeModal'],
+  props: {
+    attack: {
+      type: Object,
+      required: true,
+    },
+  },
 });
 </script>
 
 <style scoped>
 .modal-attack {
+  display: grid;
+  grid-template-rows: 100px, 1fr, 1fr, 5fr;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -53,11 +64,8 @@ export default defineComponent({
 }
 
 .modal-body {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: 120px, 120px, 200px, 1fr;
 }
 
 h3 {
@@ -66,17 +74,32 @@ h3 {
   color: #ee6c4d;
 }
 
-.attack-name,
+.attack-name {
+  margin-top: 2rem;
+  text-align: center;
+}
+
 .attack-cost,
 .attack-damage,
 .attack-description {
-  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  margin: 1rem;
+  text-align: center;
 }
 
 button {
   width: 100%;
   background-color: transparent;
   border: none;
+  transition: opacity 0.3s;
+}
+
+button:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 
 button img {

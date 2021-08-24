@@ -24,13 +24,13 @@
         </ul>
       </div>
       <div class="detail">
-        <ul v-if="detail && detail.resistances" class="resistences">
+        <ul v-if="detail.resistances" class="resistences">
           <h3>Resistências:</h3>
-          <li class="resistence" v-for="resistence in detail.resistances" :key="resistence">
-            {{ resistence.type }}
+          <li class="resistence" v-for="resistance in detail.resistances" :key="resistance">
+            {{ resistance.type }}
           </li>
         </ul>
-        <ul>
+        <ul v-else>
           <h3>Resistências:</h3>
           <li class="resistence">
             don't list
@@ -48,19 +48,21 @@
       <div class="detail">
         <ul class="attacks">
           <h3>Ataques:</h3>
-          <li @click="modal = !modal" class="attack" v-for="attack in detail.attacks" :key="attack">
-            {{ attack.name }}
+          <li class="attack" v-for="attack in detail.attacks" :key="attack">
+            <p @click="modalAttack(attack)">
+              {{ attack.name }}
+            </p>
           </li>
         </ul>
       </div>
     </div>
     <Button to="/" text="Voltar" />
   </div>
-  <ModalAttack v-if="modal" />
+  <ModalAttack v-if="modal" :attack="attack" @closeModal="handleModal" />
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 import { Button } from '../atoms';
 import { ModalAttack } from '@/components/molecules';
 
@@ -76,10 +78,20 @@ export default defineComponent({
       required: true,
     },
   },
-  setup() {
-    const modal = ref(false);
-
-    return { modal };
+  data() {
+    return {
+      modal: false,
+      attack: [],
+    };
+  },
+  methods: {
+    handleModal() {
+      this.modal = !this.modal;
+    },
+    modalAttack(attack: []) {
+      this.handleModal();
+      this.attack = attack;
+    },
   },
 });
 </script>
@@ -117,11 +129,11 @@ export default defineComponent({
   list-style: circle;
 }
 
-.attack {
+.attack p {
   transition: color 0.3s;
   cursor: pointer;
 }
-.attack:hover {
+.attack p:hover {
   color: #ee6c4d;
 }
 </style>
