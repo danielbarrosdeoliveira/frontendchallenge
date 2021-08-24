@@ -4,7 +4,7 @@
 Obrigado por visitar este repositório.
 ## Demonstração do app funcionando
 
-<https://four-cards-feature-section.now.sh/>
+<https://frontendchallengedaniel.netlify.app>
 
 Ele é a execução de um desafio para a [Ília](https://ilia.digital/), esse teste serviu para colocar a prova meus conhecimentos em Vue.js 3 + Typescript
 ## O Desafio
