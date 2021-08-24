@@ -14,8 +14,15 @@ export default defineComponent({
 
 <style scoped>
 .container {
-  width: 85%;
+  width: 100%;
   max-width: 1180px;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 480px) {
+  .contaniner {
+    width: 100%;
+    max-width: 400px;
+  }
 }
 </style>

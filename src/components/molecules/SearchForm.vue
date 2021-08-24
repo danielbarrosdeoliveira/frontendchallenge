@@ -5,6 +5,7 @@
       class="search"
       type="text"
       placeholder="Pesquise pelo nome do pokemon..."
+      :disabled="loading"
     />
     <button type="submit" @click.prevent="searchPokemon" @keypress.enter="searchPokemon">
       <img src="@/assets/icons/search.svg" alt="Buscar" />
@@ -26,7 +27,7 @@ export default defineComponent({
   methods: {
     ...mapActions(['index']),
     searchPokemon() {
-      const query = `?q=name:${this.search}`;
+      const query = `?q=name:*${this.search}*`;
       this.index(query);
     },
   },
@@ -77,10 +78,11 @@ button img {
 
 @media screen and (max-width: 480px) {
   .search-form {
+    max-width: 400px;
+    width: 100%;
+    margin: 32px auto;
     position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
+    top: 20px;
   }
 }
 </style>

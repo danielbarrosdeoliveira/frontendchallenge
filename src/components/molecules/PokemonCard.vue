@@ -63,12 +63,23 @@ export default defineComponent({
 
 @media screen and (max-width: 480px) {
   .pokemon-card {
+    max-width: 400px;
+    margin: 64px auto;
+    width: 100%;
+    height: 300px;
     display: flex;
     flex-wrap: nowrap;
     overflow-y: auto;
-    max-height: 100vh;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
+    font-size: .8rem;
+  }
+
+  .card {
+    max-width: 300px;
+    height: 100%;
+    max-height: 270px;
+    margin: 0;
   }
 }
 </style>

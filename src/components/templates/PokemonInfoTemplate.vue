@@ -44,7 +44,8 @@ export default defineComponent({
 @media screen and (max-width: 480px) {
   .pokemon-info-template {
     flex-direction: column;
-    max-width: 480px;
+    max-width: 320px;
+    margin: 16px auto;
     width: 100%;
   }
 }

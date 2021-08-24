@@ -1,8 +1,13 @@
 <template>
   <Container class="home-template">
     <SearchForm />
-    <Loading v-if="loading" :loadingStyle="{ width: '60px', height: '60px' }" />
-    <PokemonCard :pokemons="pokemons" v-else-if="!loading && pokemons.length" />
+    <PokemonCard :pokemons="pokemons" v-if="!loading && pokemons.length" />
+    <div class="no-results" v-else-if="!loading && pokemons.length == 0">
+      <h3>:( Não conseguimos encontrar seu pokemon,
+        <br />tente usar outras palavras ou termos...
+      </h3>
+    </div>
+    <Loading v-else :loadingStyle="{ width: '60px', height: '60px' }" />
   </Container>
 </template>
 
@@ -40,11 +45,18 @@ export default defineComponent({
   grid-gap: 5rem;
 }
 
+h3 {
+  text-align: center;
+}
+
 @media screen and (max-width: 480px) {
   .home-template {
-    max-width: 480px;
+    max-width: 400px;
     width: 100%;
     position: relative;
+  }
+  .no-results {
+    margin: 64px auto;
   }
 }
 </style>

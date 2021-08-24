@@ -13,7 +13,7 @@ export default defineComponent({
   methods: {
     ...mapActions(['index']),
   },
-  mounted() {
+  beforeMount() {
     this.index();
   },
 });

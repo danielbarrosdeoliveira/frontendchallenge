@@ -58,7 +58,9 @@
     </div>
     <Button to="/" text="Voltar" />
   </div>
-  <ModalAttack v-if="modal" :attack="attack" @closeModal="handleModal" />
+  <transition>
+    <ModalAttack v-if="modal" :attack="attack" @closeModal="handleModal" />
+  </transition>
 </template>
 
 <script lang="ts">
@@ -114,6 +116,7 @@ export default defineComponent({
 
 .detail {
   margin-top: 1rem;
+  position: relative;
 }
 
 .name,
@@ -135,5 +138,11 @@ export default defineComponent({
 }
 .attack p:hover {
   color: #ee6c4d;
+}
+
+@media screen and (max-width: 480px) {
+  .pokemon-details {
+    max-width: 320px;
+  }
 }
 </style>

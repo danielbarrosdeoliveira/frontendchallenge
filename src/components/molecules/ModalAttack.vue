@@ -47,7 +47,7 @@ export default defineComponent({
 .modal-attack {
   display: grid;
   grid-template-rows: 100px, 1fr, 1fr, 5fr;
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -106,5 +106,15 @@ button img {
   width: 100%;
   max-width: 32px;
   display: block;
+}
+
+@media screen and (max-width: 480px) {
+  .modal-attack {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: 320px;
+    width: 100%;
+  }
 }
 </style>

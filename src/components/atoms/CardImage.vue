@@ -28,4 +28,17 @@ export default defineComponent({
   height: 100%;
   max-height: 280px;
 }
+
+@media screen and (max-width: 480px) {
+  .card-image {
+    width: 100%;
+    max-width: 400px;
+    max-height: 160px;
+    height: 100%;
+  }
+  .card-image img {
+    width: 100%;
+    display: block;
+  }
+}
 </style>

@@ -56,4 +56,10 @@ export default defineComponent({
     -webkit-transform: rotate(360deg);
   }
 }
+
+@media screen and (max-width: 480px) {
+  .loading {
+    margin: 64px auto;
+  }
+}
 </style>
