@@ -1,6 +1,6 @@
 <template>
   <div class="pokemon-card" v-if="pokemons && pokemons.length">
-    <div class="card" v-for="pokemon in orderedJobs" :key="pokemon.id">
+    <div class="card" v-for="pokemon in orderedPokemons" :key="pokemon.id">
       <router-link :to="{ name: 'pokemon', params: { id: pokemon.id } }">
         <CardImage :source="pokemon.images.small" />
         <CardInfo :name="pokemon.name" :pokeid="pokemon.id" :poketype="pokemon.types" />
@@ -28,12 +28,12 @@ export default defineComponent({
   },
   setup(props) {
     // eslint-disable-next-line arrow-body-style
-    const orderedJobs = computed(() => {
+    const orderedPokemons = computed(() => {
       // eslint-disable-next-line vue/no-mutating-props
       return props.pokemons.sort((a:Pokemon, b:Pokemon) => (a.name > b.name ? 1 : -1));
     });
 
-    return { orderedJobs };
+    return { orderedPokemons };
   },
 });
 </script>
