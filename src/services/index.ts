@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosPromise } from 'axios';
 
 const url = 'https://api.pokemontcg.io/v2';
 
@@ -9,8 +9,8 @@ const axiosInstance = axios.create({
   },
 });
 
+const get = (endpoint: string): AxiosPromise => axiosInstance.get(endpoint);
+
 export const api = {
-  get(endpoint: string) {
-    return axiosInstance.get(endpoint);
-  },
+  get,
 };
