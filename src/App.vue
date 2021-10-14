@@ -11,9 +11,3 @@ import '@/assets/css/app.css';
 
 export default defineComponent({});
 </script>
-
-<style scoped>
-.component {
-  /* margin: 5rem; */
-}
-</style>
