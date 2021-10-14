@@ -5,7 +5,7 @@ interface Image {
 
 interface Attack {
   name: string,
-  cost: Array<String>
+  cost: Array<string>
   convertedEnergyCost: number,
   damage?: string,
   text: string
@@ -24,7 +24,7 @@ export interface Pokemon {
   id: string,
   name: string,
   images: Image,
-  types: Array<String>,
+  types: Array<string>,
   attacks: Array<Attack>,
   weaknesses: Array<Weakness>,
   resistances?: Array<Resistence>
