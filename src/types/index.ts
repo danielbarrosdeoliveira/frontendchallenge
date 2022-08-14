@@ -1,5 +1,3 @@
 import { Pokemon } from './Pokemon';
 
-export {
-  Pokemon,
-};
+export { Pokemon };
